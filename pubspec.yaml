@@ -87,3 +87,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+flutter:
+ assets:
+ n.  - assets/nuevalista.m3u
