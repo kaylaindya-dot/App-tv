@@ -1,7 +1,5 @@
 name: Build APK Android
 
-
-
 on:
   push:
     branches: [ main ]
@@ -11,11 +9,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-            - name: Checkout code
+      - name: Checkout code
         uses: actions/checkout@v4
         with:
           persist-credentials: false
-
 
       - name: Set up Java
         uses: actions/setup-java@v4
