@@ -92,5 +92,5 @@ flutter:
 flutter:
   uses-material-design: true
     assets:
-        - assets/nuevalista.m3u
+        - assets/nuevalista.m3u 
 
