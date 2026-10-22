@@ -9,6 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Clear git config submodules
+        run: |
+          git config --global --unset-all submodule.flutter.url || true
+          rm -f .gitmodules
+
       - name: Checkout code
         uses: actions/checkout@v4
         with:
