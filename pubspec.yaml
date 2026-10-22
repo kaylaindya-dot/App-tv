@@ -89,8 +89,8 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
 
-flutter:
+ flutter:
   uses-material-design: true
-    assets:
-        - assets/nuevalista.m3u 
+  assets:
+    - assets/nuevalista.m3u 
 
