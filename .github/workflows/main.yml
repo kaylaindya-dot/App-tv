@@ -9,16 +9,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+          persist-credentials: false
+
       - name: Clear git config submodules
         run: |
           git config --global --unset-all submodule.flutter.url || true
           rm -f .gitmodules
 
-      - name: Checkout code
-        uses: actions/checkout@v4
+     
+        uses: actions/checkout@v4.  
         with:
-          persist-credentials: false
-          submodules: false
+    submodules: 'recursive' # 0 puedes usar 'true'
+    persist-credentials: false
+
+        
+        
+          
+       
 
       - name: Set up Java
         uses: actions/setup-java@v4
