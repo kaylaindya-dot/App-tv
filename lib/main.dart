@@ -39,25 +39,28 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _loadChannels() async {
-    try {
-      final content = await rootBundle.loadString('assets/nuevalista.m3u');
-      final lines = content.split('\n');
-      List<String> loadedChannels = [];
-      
-      for (var line in lines) {
-        line = line.trim();
-        if (line.isNotEmpty && !line.startsWith('#')) {
-          loadedChannels.add(line);
-        }
+  try {
+    final content = await rootBundle.loadString('assets/nuevalista.m3u');
+    final lines = content.split('\n');
+    List<String> loadedChannels = [];
+
+    for (var line in lines) {
+      line = line.trim();
+      if (line.isNotEmpty && line.startsWith('http')) {
+        loadedChannels.add(line);
       }
-      
-      setState(() {
-        channels = loadedChannels;
-      });
-    } catch (e) {
-      debugPrint('Error al cargar canales: $e');
     }
+
+    setState(() {
+      channels = loadedChannels;
+    });
+  } catch (e) {
+    debugPrint('Error al cargar canales: $e');
   }
+}
+
+      
+      
 
   Future<void> _playChannel(String url) async {
     setState(() {
