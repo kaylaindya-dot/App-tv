@@ -63,22 +63,22 @@ class _HomeScreenState extends State<HomeScreen> {
       
 
   Future<void> _playChannel(String url) async {
-    setState(() {
-      currentPlaying = url;
-    });
+  setState(() {
+    currentPlaying = url;
+  });
 
-        final Uri uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(
-        uri,
-        mode: LaunchMode.externalApplication,
-        webViewConfiguration: const WebViewConfiguration(enableJavaScript: false),
-      );
-    } else {
+  final Uri uri = Uri.parse(url);
 
-      debugPrint('No se pudo abrir el enlace: $url');
-    }
+  try {
+    await launchUrl(
+      uri,
+      mode: LaunchMode.externalApplication,
+    );
+  } catch (e) {
+    debugPrint('Error al abrir el reproductor: $e');
   }
+}
+
 
   @override
   Widget build(BuildContext context) {
