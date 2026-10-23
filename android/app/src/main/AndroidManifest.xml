@@ -11,9 +11,13 @@
     </queries>
 
     <application
-        android:label="app_tv"
-        android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+    android:label="app_tv"
+    android:name="${applicationName}"
+    android:icon="@mipmap/ic_launcher"
+    android:usesCleartextTraffic="true">
+
+
+        
         <activity
             android:name=".MainActivity"
             android:exported="true"
