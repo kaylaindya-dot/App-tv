@@ -64,28 +64,15 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
       
-   Future<void> _playChannel(String url) async {
-    setState(() {
-      currentPlaying = url;
-    });
-
-    if (_controller != null) {
-      await _controller!.dispose();
-      _controller = null;
-    }
-
-    try {
-      final controller = VideoPlayerController.networkUrl(Uri.parse(url));
-      _controller = controller;
-
-      await controller.initialize();
-      setState(() {});
-      await controller.play();
-    } catch (error) {
-      debugPrint("Error al inicializar el vídeo: $error");
+     Future<void> _playChannel(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      debugPrint('No se pudo abrir el enlace: $url');
     }
   }
-     
+
+
+    
 
     
 
@@ -101,15 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Column(
         children: [
-    if (_controller != null && _controller!.value.isInitialized) ...[
-      Container(
-        height: 220,
-        color: Colors.black,
-        child: AspectRatio(
-          aspectRatio: _controller!.value.aspectRatio,
-          child: VideoPlayer(_controller!),
-        ),
-      ),
+    
     
             
     ],
