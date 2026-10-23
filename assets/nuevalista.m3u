@@ -1,2 +1,2 @@
-#EXTINF:-1,F1
-http://127.0.0.1:6878/ace/getstream?id=b04372b9543d763bd2dbd2a1842d9723fd080076
+#EXTINF:-1,Canal 1
+http://127.0.0.1:6878/ace/getstream?id=TU_ID_AQUÍ&f=.ts
