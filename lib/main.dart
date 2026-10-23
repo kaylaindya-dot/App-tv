@@ -33,6 +33,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<String> channels = [];
   String? currentPlaying;
+  VideoPlayerController? _controller;
+
 
   @override
   void initState() {
