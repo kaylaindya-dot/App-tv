@@ -94,6 +94,28 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Column(
         children: [
+    if (_controller != null && _controller!.value.isInitialized) ...[
+      Container(
+        height: 220,
+        color: Colors.black,
+        child: AspectRatio(
+          aspectRatio: _controller!.value.aspectRatio,
+          child: VideoPlayer(_controller!),
+        ),
+      ),
+    
+            const SizedBox(width: 12),
+            Expanded(
+              child: Text(
+                'Reproduciendo: $currentPlaying',
+                style: const TextStyle(color: Colors.white),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ],
+
           if (currentPlaying != null)
             Container(
               padding: const EdgeInsets.all(12),
