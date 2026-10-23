@@ -67,10 +67,15 @@ class _HomeScreenState extends State<HomeScreen> {
       currentPlaying = url;
     });
 
-    final Uri uri = Uri.parse(url);
+        final Uri uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
+      await launchUrl(
+        uri,
+        mode: LaunchMode.externalApplication,
+        webViewConfiguration: const WebViewConfiguration(enableJavaScript: false),
+      );
     } else {
+
       debugPrint('No se pudo abrir el enlace: $url');
     }
   }
