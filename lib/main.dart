@@ -104,16 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     
-            const SizedBox(width: 12),
-            Expanded(
-              child: Text(
-                'Reproduciendo: $currentPlaying',
-                style: const TextStyle(color: Colors.white),
-              ),
-            ),
-          ],
-        ),
-      ),
+            
     ],
 
           if (currentPlaying != null)
