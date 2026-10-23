@@ -64,23 +64,30 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
       
-      
-
-    Future<void> _playChannel(String url) async {
+   Future<void> _playChannel(String url) async {
     setState(() {
       currentPlaying = url;
     });
 
-    await _controller?.dispose();
+    if (_controller != null) {
+      await _controller!.dispose();
+      _controller = null;
+    }
 
-    _controller = VideoPlayerController.networkUrl(Uri.parse(url))
-      ..initialize().then((_) {
-        setState(() {});
-        _controller!.play();
-      }).catchError((error) {
-        debugPrint("Error al inicializar el vídeo: $error");
-      });
+    try {
+      final controller = VideoPlayerController.networkUrl(Uri.parse(url));
+      _controller = controller;
+
+      await controller.initialize();
+      setState(() {});
+      await controller.play();
+    } catch (error) {
+      debugPrint("Error al inicializar el vídeo: $error");
+    }
   }
+     
+
+    
 
 
 
